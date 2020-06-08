@@ -8,16 +8,16 @@
 
 import React,{Component} from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
+  YellowBox
 } from 'react-native';
 import configureStore from './src/store/configureStore'
 import { Provider } from 'react-redux'
 import NavigationContainer from './src/navigation/index'
+
+YellowBox.ignoreWarnings([
+  'VirtualizedLists should never be nested', // TODO: Remove when fixed
+])
 const store = configureStore();
 class App extends Component {
   render(){

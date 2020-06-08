@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import { Text, View, Image, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native'
+import { Text, View, Image, YellowBox,FlatList, TouchableOpacity, ActivityIndicator,ScrollView } from 'react-native'
 import { Header ,Input,Button} from '../../Components/index'
 import { style } from './style'
 import { Servicecategory } from '../../store/Actions/Services'
 import { connect } from 'react-redux'
-
+YellowBox.ignoreWarnings([
+    'VirtualizedLists should never be nested',
+  ])
 class ClinicVisits extends Component {
     state = {
         selectedItem: [],
@@ -34,16 +36,18 @@ class ClinicVisits extends Component {
                 <Header BackButton Title={"Clinic Visit"} 
                 onPressLeft={()=>{this.props.navigation.goBack()}}/>
                 {this.props.loading && (
-                    <ActivityIndicator color={'#FCF4BD'} />
+                    
+                    <ActivityIndicator color={'#29A8B8'} size={'large'} />
+                   
                 )}
 
                 {!this.props.loading && (
-                    <View style={style.MainContainer}>
+                    <ScrollView style={style.MainContainer}>
                         <Text style={style.HeadlinTex}>{"Speciality"}</Text>
                         <FlatList
                             data={this.props.categories}
                             contentContainerStyle={style.LitsStyle}
-                            keyExtractor={item => item.key}
+                            keyExtractor={index => index.toString()}
                             renderItem={({ item, index }) => {
                                 return (
                                     <TouchableOpacity style={[style.entyRow, { backgroundColor: this.state.selectedItem[index] ? '#29A8B8' : '#FCF4BD' }]}
@@ -78,7 +82,7 @@ class ClinicVisits extends Component {
                             <Button title={"Show Result"}
                                 onPress={() => { }} />
                         </View>
-                    </View>
+                    </ScrollView>
 
                 )}
             </View>

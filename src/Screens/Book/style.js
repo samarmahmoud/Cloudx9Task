@@ -8,7 +8,7 @@ const style = StyleSheet.create({
     },
     headerSection: {
         backgroundColor: '#BFC6CC',
-        height: '30%'
+        height: '33%'
     },
     headerStyle: {
         backgroundColor: '#BFC6CC'

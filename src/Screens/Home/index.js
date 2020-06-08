@@ -5,7 +5,7 @@ import AsyncStorage from '@react-native-community/async-storage'
 
 class Home extends Component {
     state = {
-        user: {},
+        user: {first_name:""},
     }
     async componentDidMount() {
         let User = await AsyncStorage.getItem('user')
